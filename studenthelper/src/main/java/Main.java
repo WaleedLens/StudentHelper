@@ -1,4 +1,5 @@
 import com.google.inject.Injector;
+import core.FlightSearch;
 import core.SeleniumScrape;
 import core.Webserver;
 import core.utils.FileUtils;
