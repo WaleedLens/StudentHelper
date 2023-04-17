@@ -2,7 +2,9 @@ package core;
 
 import core.utils.PatternUtils;
 import model.Flight;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.LocalDateTime;
@@ -19,13 +21,14 @@ public class FlightSearch {
 
     //https://www.google.com/travel/flights?q=Flights%20to%20#AIRPORT_CODE#%20from%20#AIRPORT_CODE#%20on%20#YEAR#-#MONTH#-#DAY#%20through%20#YEAR#-#MONTH#-#DAY#
     //https://www.google.com/travel/flights?q=Flights%20to%20#AIRPORT_CODE#%20from%20#AIRPORT_CODE#%20on%20#YEAR#-#MONTH#-#DAY#%20through%20#YEAR#-#MONTH#-#DAY#
-    public List<Flight> getFlights(String toCity, String fromCity, LocalDateTime fromDate, LocalDateTime toDate){
+    public List<Flight> getFlights(){
+
 
         return null;
     }
 
 
-    public void GoogleFlightOneWay(String fromAirport,String toAirport,int year,int month,int day,int adults){
+    public void googleFlightOneWay(String fromAirport,String toAirport,int year,int month,int day,int adults){
         String fullDateInString =  String.join("-",String.valueOf(year),String.valueOf(month),String.valueOf(day));
         String countAdults = PatternUtils.getAdultsNumber(adults);
         String oneWayURL = String.join("%20","https://www.google.com/travel/flights?q=Flights","to",toAirport,"from",fromAirport,
@@ -37,7 +40,7 @@ public class FlightSearch {
 
 
 
-    public void InitGoogleFlightRoundTrip(String fromAirport,String toAirport,int yearStart,int monthStart,int dayStart,
+    public void googleFlightRoundTrip(String fromAirport,String toAirport,int yearStart,int monthStart,int dayStart,
           int adults,int yearEnd,int monthEnd,int dayEnd){
 
         String fullDateStart =  String.join("-",String.valueOf(yearStart),String.valueOf(monthStart),String.valueOf(dayStart));
@@ -48,6 +51,7 @@ public class FlightSearch {
                 "oneway","on",fullDateStart,"through",fullDateEnd,"with",countAdults,"adult");
         chromeDriver.get(roundTripURL);
     }
+
 
 
 
