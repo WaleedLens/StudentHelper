@@ -13,7 +13,10 @@ public class Main {
     public static void main(String[] args){
         SeleniumScrape seleniumScrape = new SeleniumScrape();
         Webserver wb = new Webserver();
-
+        FlightSearch f = new FlightSearch(seleniumScrape.getChromeDriver());
+        f.googleFlightOneWay("JED", "DMM", 2023, 5, 3, 2);
+        f.getFlights();
+        
         wb.route(HttpRequest.class,"HttpRequest","/req");
         wb.startServer();
     }

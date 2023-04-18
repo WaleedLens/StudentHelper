@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FlightSearch {
@@ -24,8 +25,41 @@ public class FlightSearch {
     public List<Flight> getFlights(){
 
 
+        List<WebElement> wb1 = chromeDriver.findElements(By.className("rGRiKd"));
+        System.out.println("Size 2: " + wb1.size());
+
+        List<WebElement> wb2 = chromeDriver.findElements(By.className("h1fkLb"));
+
+
         return null;
     }
+    private List<Integer> getPrices(){
+        List<Integer> prices = new ArrayList<>();
+        List<WebElement> wb = chromeDriver.findElements(By.ByClassName.className("BVAVmf"));
+        for(WebElement e : wb){
+            if(e.getText().contains("SAR")){
+                prices.add(PatternUtils.getPriceAsInteger(e.getText()));
+            }
+        }
+        if(prices.size() == 0)
+            throw new IllegalStateException("Unable to fetch data");
+        return prices;
+    }
+    private List<String> getTimeIntervals(){
+        List<WebElement> wb = chromeDriver.findElements(By.className("wtdjmc"));
+        List<String> timeIntervals = new ArrayList<>();
+        for(WebElement e : wb){
+            String timeInterval = e.getText().replaceAll("\\s","").replaceAll("-","").replaceAll("\\s","");
+            if(timeInterval.matches("^[0-9]+:[0-9]+.(PM|AM|am|pm).[0-9]+:[0-9]+.(PM|AM|am|pm)$")) {
+                timeIntervals.add(e.getText().replaceAll("\n",""));
+            }
+        }
+        if(timeIntervals.size() == 0)
+            throw new IllegalStateException("Unable to fetch data");
+        return timeIntervals;
+    }
+
+
 
 
     public void googleFlightOneWay(String fromAirport,String toAirport,int year,int month,int day,int adults){
@@ -35,6 +69,9 @@ public class FlightSearch {
                 "oneway",fullDateInString,"with",countAdults,"adult");
         chromeDriver.get(oneWayURL);
     }
+
+
+
 
 
 

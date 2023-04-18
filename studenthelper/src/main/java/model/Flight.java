@@ -2,19 +2,19 @@ package model;
 
 import java.time.LocalDateTime;
 
-public class Flight {
+public class Flight implements Comparable {
 
     private String flightCode;
     private String company;
     private long price;
-    private LocalDateTime time;
+    private String timeInterval;
 
 
-    public Flight(String flightCode, String company, long price, LocalDateTime time) {
+    public Flight(String flightCode, String company, long price, String timeInterval) {
         this.flightCode = flightCode;
         this.company = company;
         this.price = price;
-        this.time = time;
+        this.timeInterval = timeInterval;
     }
 
     public String getFlightCode() {
@@ -41,12 +41,19 @@ public class Flight {
         this.price = price;
     }
 
-    public LocalDateTime getTime() {
-        return time;
+    public String getTimeInterval() {
+        return timeInterval;
     }
 
-    public void setTime(LocalDateTime time) {
-        this.time = time;
+    public void setTimeInterval(String timeInterval) {
+        this.timeInterval = timeInterval;
     }
 
+
+    @Override
+    public int compareTo(Object o) {
+        Flight a = (Flight) o;
+
+        return 0;
+    }
 }

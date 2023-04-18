@@ -3,6 +3,10 @@ package core.utils;
 public class PatternUtils {
 
 
+    public static int getPriceAsInteger(String price){
+        int priceExtracted = Integer.parseInt(price.replaceAll("\\s","").replaceAll("SAR",""));
+        return priceExtracted;
+    }
     /**
      * Convert integer into string (e.g., 1 to one , 2 to two ...etc)
      * @param number
@@ -35,4 +39,6 @@ public class PatternUtils {
                 throw new IllegalStateException("Number n should be between 1 <= n <= 10 ");
         }
     }
+
+
 }
