@@ -1,13 +1,13 @@
-package core;
+package service;
 
 import core.utils.FileUtils;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class SeleniumScrape {
+public class SeleniumService {
     private ChromeDriver chromeDriver;
 
-    public SeleniumScrape(){
+    public SeleniumService(){
         System.setProperty("webdriver.chrome.driver", FileUtils.getResourcesPath()+"chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");

@@ -6,12 +6,14 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import service.FlightSearchService;
+import service.SeleniumService;
 
 import java.util.List;
 
 public class FlightSearchTest {
-    ChromeDriver chd = new SeleniumScrape().getChromeDriver();
-    FlightSearch flightSearch = new FlightSearch(chd);
+    ChromeDriver chd = new SeleniumService().getChromeDriver();
+    FlightSearchService flightSearch = new FlightSearchService(chd);
 
 
     /**

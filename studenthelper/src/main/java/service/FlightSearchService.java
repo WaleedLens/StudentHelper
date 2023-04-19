@@ -1,27 +1,24 @@
-package core;
+package service;
 
 import core.utils.PatternUtils;
 import model.Flight;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Logger;
 
-public class FlightSearch {
+public class FlightSearchService {
 
     private final ChromeDriver chromeDriver;
 
-    Logger log = Logger.getLogger(FlightSearch.class.getName());
+    Logger log = Logger.getLogger(FlightSearchService.class.getName());
 
 
-    public FlightSearch(ChromeDriver chromeDriver) {
+    public FlightSearchService(ChromeDriver chromeDriver) {
         this.chromeDriver = chromeDriver;
         log.info("Flight search has been initiated");
     }
