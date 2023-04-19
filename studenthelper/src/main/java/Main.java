@@ -14,8 +14,8 @@ public class Main {
         SeleniumScrape seleniumScrape = new SeleniumScrape();
         Webserver wb = new Webserver();
         FlightSearch f = new FlightSearch(seleniumScrape.getChromeDriver());
-        f.googleFlightOneWay("JED", "DMM", 2023, 5, 3, 2);
-        f.getFlights();
+        f.googleFlightOneWay("JED", "DMM", 2023, 5, 3, 1);
+        f.getCheapestFlight();
         
         wb.route(HttpRequest.class,"HttpRequest","/req");
         wb.startServer();

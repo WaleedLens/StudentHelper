@@ -4,25 +4,25 @@ import java.time.LocalDateTime;
 
 public class Flight implements Comparable {
 
-    private String flightCode;
+    private String stopsIfAny;
     private String company;
-    private long price;
+    private int price;
     private String timeInterval;
 
 
-    public Flight(String flightCode, String company, long price, String timeInterval) {
-        this.flightCode = flightCode;
+    public Flight(String stopsIfAny, String company, int price, String timeInterval) {
+        this.stopsIfAny = stopsIfAny;
         this.company = company;
         this.price = price;
         this.timeInterval = timeInterval;
     }
 
     public String getFlightCode() {
-        return flightCode;
+        return stopsIfAny;
     }
 
     public void setFlightCode(String flightCode) {
-        this.flightCode = flightCode;
+        this.stopsIfAny = flightCode;
     }
 
     public String getCompany() {
@@ -33,11 +33,11 @@ public class Flight implements Comparable {
         this.company = company;
     }
 
-    public long getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -53,7 +53,9 @@ public class Flight implements Comparable {
     @Override
     public int compareTo(Object o) {
         Flight a = (Flight) o;
-
-        return 0;
+        if(a.price > this.price)
+            return -1;
+        else
+            return 0;
     }
 }

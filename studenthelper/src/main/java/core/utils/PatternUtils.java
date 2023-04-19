@@ -4,11 +4,13 @@ public class PatternUtils {
 
 
     public static int getPriceAsInteger(String price){
+        price = price.replaceAll(",","");
         int priceExtracted = Integer.parseInt(price.replaceAll("\\s","").replaceAll("SAR",""));
         return priceExtracted;
     }
     /**
      * Convert integer into string (e.g., 1 to one , 2 to two ...etc)
+     * Note. Max number of adults is ten-> 10
      * @param number
      * @return
      */
